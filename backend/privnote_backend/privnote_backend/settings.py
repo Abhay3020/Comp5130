@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djongo',
+    #'rest_framework'
+    #'notes',
+    'notes.apps.NotesConfig',
 ]
 
 MIDDLEWARE = [
@@ -74,16 +77,19 @@ WSGI_APPLICATION = 'privnote_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'privnote_db',  # MongoDB database name
-        'CLIENT': {
-            'host': 'localhost',
-            'port': 27017,
-        }
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'privnote_db',  # Your MongoDB database name
+#         'ENFORCE_SCHEMA': False,  # Optional: Schema validation
+#         'CLIENT': {
+#             'host': 'mongodb://localhost:27017',  # MongoDB connection string
+#             'username': '',  
+#             'password': '',  
+#         }
+#     }
+# }
+
 
 
 
