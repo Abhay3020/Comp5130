@@ -38,9 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djongo',
+    'corsheaders',
+    'rest_framework',
+    'notes',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,6 +53,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://192.168.0.13:3000',  # Your React app's address
 ]
 
 ROOT_URLCONF = 'privnote_backend.urls'
@@ -77,14 +88,26 @@ WSGI_APPLICATION = 'privnote_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'privnote_db',  # MongoDB database name
+         'NAME': 'privnote_db',# Your MongoDB Atlas database name
         'CLIENT': {
-            'host': 'localhost',
-            'port': 27017,
+            'host': 'mongodb+srv://abhay1:1234@privnote.dklus.mongodb.net/?retryWrites=true&w=majority&appName=privnote',
+            # 'username': 'abhay1',  # Replace with your MongoDB Atlas username
+            # 'password': '1234',  # Replace with your MongoDB Atlas password
+            # 'retryWrites': True,
+            # 'w': 'majority'
         }
     }
 }
 
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / "db.sqlite3",  
+#     }
+# }
 
 
 

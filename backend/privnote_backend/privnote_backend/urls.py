@@ -14,14 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', include('notes.urls')),
+# ]
+
+
+
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('notes.urls')),
+    path('', include('notes.urls')),  # Link the notes app's URLs
 ]
-
-
-# privnote_backend/urls.py (or the main project directory)
-
