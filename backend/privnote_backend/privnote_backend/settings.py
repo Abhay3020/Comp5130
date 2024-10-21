@@ -27,20 +27,34 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import os
+
+# Add this line to load the key file path
+SECRET_KEY_FILE_PATH = os.path.join(BASE_DIR, 'secret.key')
+
+# Add this line to load the key from the file, if needed globally
+def load_fernet_key():
+    with open(SECRET_KEY_FILE_PATH, 'rb') as key_file:
+        return key_file.read()
+
+# Example usage if you want to set the key as a global variable
+FERNET_KEY = load_fernet_key()
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'rest_framework',
+    'notes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djongo',
-    'corsheaders',
-    'rest_framework',
-    'notes',
+    'djongo'
+    
 ]
 
 MIDDLEWARE = [
@@ -58,7 +72,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'http://192.168.0.13:3000',  # Your React app's address
+    'http://192.168.0.15:3000',  # Your React app's address
 ]
 
 ROOT_URLCONF = 'privnote_backend.urls'
@@ -90,7 +104,8 @@ DATABASES = {
         'ENGINE': 'djongo',
          'NAME': 'privnote_db',# Your MongoDB Atlas database name
         'CLIENT': {
-            'host': 'mongodb+srv://abhay1:1234@privnote.dklus.mongodb.net/?retryWrites=true&w=majority&appName=privnote',
+            'host': 'mongodb+srv://abhay3020:1234@privnote.dklus.mongodb.net/?retryWrites=true&w=majority&appName=privnote',
+            'port': 27017,
             # 'username': 'abhay1',  # Replace with your MongoDB Atlas username
             # 'password': '1234',  # Replace with your MongoDB Atlas password
             # 'retryWrites': True,
@@ -98,6 +113,28 @@ DATABASES = {
         }
     }
 }
+
+
+MIGRATION_MODULES = {
+    'auth': None,
+    'contenttypes': None,
+    'sessions': None,
+    'admin': None,
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'your_db_name',  # Replace with your database name
+#         'CLIENT': {
+#             'host': 'mongodb+srv://abhay3020:1234@cluster0.mongodb.net/privnote_db?retryWrites=true&w=majority',
+#             'username': 'abhay3020',  # Replace with your MongoDB Atlas username
+#             'password': '1234',  # Replace with your MongoDB Atlas password
+#             #'authMechanism': 'SCRAM-SHA-1'
+#         }
+#     }
+# }
+
 
 
 

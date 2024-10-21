@@ -1,24 +1,7 @@
-# from django.urls import path
-
-# from . import views
-
-# urlpatterns = [
-#     path('', views.home, name='home')
-# ]
-
-# # notes/urls.py
-
-# from django.urls import path
-# from .views import home
-
-# urlpatterns = [
-#     path('', home, name='home'),
-# ]
-
-
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/notes/', views.notes_list_create, name='notes-list-create'),
+    path('api/notes/', views.notes_list_create, name='notes_list_create'),
+    path('notes/<str:unique_id>/', views.get_note_by_url, name='get_note'),
 ]

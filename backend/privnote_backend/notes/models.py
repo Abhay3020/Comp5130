@@ -1,18 +1,8 @@
-# Create your models here.
-# notes/models.py
-
-from django.db import models
-
-#from db_connection import db
-
-#notes_collection = db['notes']
-
-
-from bson import ObjectId
+from djongo import models
 
 class Note(models.Model):
-    id = models.CharField(max_length=3, primary_key=True, default=lambda: str(ObjectId()), editable=False)  # Add the ObjectId field
-    content = models.TextField(max_length=500)
+    _id = models.ObjectIdField()
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
-
+    unique_id = models.CharField(max_length=100, unique=True, null=False, blank=False)
+    access_count = models.IntegerField(default=0)  # To track the number of times the note is accessed
