@@ -1,33 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './NoteDisplay.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const NoteDisplay = () => {
   const { unique_id } = useParams();
-  const [noteContent, setNoteContent] = useState('');
-  const [error, setError] = useState('');
+  const [noteContent, setNoteContent] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/notes/${unique_id}/`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.content) {
-          setNoteContent(data.content);
-        } else {
-          setError('Failed to load the note.');
+    const fetchNote = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/notes/${unique_id}/`, {
+          method: "GET",
+        });
+
+        if (!response.ok) {
+          throw new Error("Note not found or has been deleted.");
         }
-      })
-      .catch((error) => {
-        setError('Error fetching the note.');
-        console.error('Error:', error);
-      });
+
+        const data = await response.json();
+        setNoteContent(data.content);
+      } catch (err) {
+        console.error("Error fetching note:", err);
+        setError(err.message || "An error occurred while fetching the note.");
+      }
+    };
+
+    fetchNote();
   }, [unique_id]);
 
   return (
-    <div className="note-display">
-      <h1>Note Content</h1>
-      <hr></hr>
-      {error ? <p>{error}</p> : <p>{noteContent}</p>}
+    <div className="note-display-container">
+      {error ? (
+        <p className="error-message">{error}</p>
+      ) : (
+        <div>
+          <h2>Note Content</h2>
+          <p>{noteContent}</p>
+        </div>
+      )}
     </div>
   );
 };
