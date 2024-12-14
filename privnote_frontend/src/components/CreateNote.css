@@ -1,0 +1,129 @@
+/* General styling for the page */
+.create-note {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .create-note h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the textarea */
+  textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    resize: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Styling for the buttons */
+  button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .advanced-options-toggle {
+    background-color: #ff7f50;
+    color: #fff;
+    margin-top: 10px;
+  }
+  
+  .advanced-options-toggle:hover {
+    background-color: #e5673c;
+  }
+  
+  .submit-button {
+    background-color: #28a745;
+    color: #fff;
+    margin-top: 15px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Advanced Options styling */
+  .advanced-options {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .advanced-options .field {
+    margin-bottom: 15px;
+  }
+  
+  .advanced-options label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .advanced-options input,
+  .advanced-options select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Success message for generated URL */
+  p {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Error message */
+  p.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Add spacing for better layout */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
