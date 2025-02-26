@@ -1,0 +1,4 @@
+Django
+redis
+sqlite3
+python-dotenv
